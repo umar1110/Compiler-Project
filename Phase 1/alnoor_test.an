@@ -1,0 +1,15 @@
+
+func lightUp(x) ` 
+    show "Lighting " -> x ~
+    returnn x ** 2 ~
+` 
+iqra while when count %% 2 == 0 ` 
+    show "Even pass: " -> count ~
+    count := count + 1 ~
+` 
+repeat  (i in 1..3) ` 
+    muthanna name := "Student" -> i ~
+    show name ~
+until count > 2 ~
+kitab "End of program" ~
+akhbar ~
