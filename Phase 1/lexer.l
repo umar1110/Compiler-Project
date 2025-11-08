@@ -16,7 +16,8 @@ static int type_counts_len = 0;
 static int total_tokens = 0;
 static int keyword_count = 0;
 static int identifier_count = 0;
-static int number_count = 0;
+static int integer_count = 0;
+static int float_count = 0;
 static int string_count = 0;
 static int operator_count = 0;
 static int punctuation_count = 0;
@@ -42,8 +43,10 @@ static void increment_category(const char *category) {
         keyword_count += 1;
     } else if (strcmp(category, "Identifier") == 0) {
         identifier_count += 1;
-    } else if (strcmp(category, "Number") == 0) {
-        number_count += 1;
+    } else if (strcmp(category, "Integer") == 0) {
+        integer_count += 1;
+    } else if (strcmp(category, "Float") == 0) {
+        float_count += 1;
     } else if (strcmp(category, "String") == 0) {
         string_count += 1;
     } else if (strcmp(category, "Operator") == 0) {
@@ -71,7 +74,8 @@ static void print_summary(void) {
     printf("\nCategory Counts:\n");
     printf("  Keyword       : %d\n", keyword_count);
     printf("  Identifier    : %d\n", identifier_count);
-    printf("  Number        : %d\n", number_count);
+    printf("  Integer       : %d\n", integer_count);
+    printf("  Float         : %d\n", float_count);
     printf("  String        : %d\n", string_count);
     printf("  Operator      : %d\n", operator_count);
     printf("  Punctuation   : %d\n", punctuation_count);
@@ -85,7 +89,8 @@ static void print_summary(void) {
 /* Definitions section */
 DIGIT      [0-9]
 ID         [a-zA-Z_][a-zA-Z0-9_]*
-NUMBER     {DIGIT}+(\.{DIGIT}+)?
+INTEGER    [+-]?{DIGIT}+
+FLOAT      [+-]?{DIGIT}+\.{DIGIT}+
 STRING     \"([^\\\"]|\\.)*\"
 WS         [ \t\r\n]+
 
@@ -94,39 +99,53 @@ WS         [ \t\r\n]+
 "//".*                    { /* ignore single-line comment */ }
 
 
-"noor"                    { emit_token("KW_NOOR", yytext, "Keyword"); }
-"iqra"                    { emit_token("KW_IQRA", yytext, "Keyword"); }
-"zawiyah"                 { emit_token("KW_ZAWIYAH", yytext, "Keyword"); }
-"kitab"                   { emit_token("KW_KITAB", yytext, "Keyword"); }
-"akhbar"                  { emit_token("KW_AKHBAR", yytext, "Keyword"); }
-"func"                    { emit_token("KW_FUNC", yytext, "Keyword"); }
-"varn"                    { emit_token("KW_VARN", yytext, "Keyword"); }
-"muthanna"                { emit_token("KW_MUTHANNA", yytext, "Keyword"); }
-"watan"                   { emit_token("KW_WATAN", yytext, "Keyword"); }
-"sala"                    { emit_token("KW_SALA", yytext, "Keyword"); }
-"show"                    { emit_token("KW_SHOW", yytext, "Keyword"); }
-"when"                    { emit_token("KW_WHEN", yytext, "Keyword"); }
-"repeat"                  { emit_token("KW_REPEAT", yytext, "Keyword"); }
-"until"                   { emit_token("KW_UNTIL", yytext, "Keyword"); }
-"returnn"                 { emit_token("KW_RETURNN", yytext, "Keyword"); }
+"raqam"                    { emit_token("KW_int", yytext, "Keyword"); }
+"aaim"                    { emit_token("KW_float", yytext, "Keyword"); }
+"harf"                 { emit_token("KW_char", yytext, "Keyword"); }
+"sahih"                   { emit_token("KW_bool", yytext, "Keyword"); }
+"laShay"                  { emit_token("KW_void", yytext, "Keyword"); }
+"Dalla"                    { emit_token("KW_def / KW_func", yytext, "Keyword"); }
+"in"                    { emit_token("KW_if", yytext, "Keyword"); }
+"waIn"                { emit_token("KW_elseIf", yytext, "Keyword"); }
+"walakin"                   { emit_token("KW_else", yytext, "Keyword"); }
+"ikhtiyar"                    { emit_token("KW_switch", yytext, "Keyword"); }
+"mithla"                    { emit_token("KW_case", yytext, "Keyword"); }
+"daruri"                    { emit_token("KW_default", yytext, "Keyword"); }
+"haythuma"                  { emit_token("KW_while", yytext, "Keyword"); }
+"bimiqdar"                   { emit_token("KW_for", yytext, "Keyword"); }
+"ifal"                 { emit_token("KW_do", yytext, "Keyword"); }
+"qaf"                 { emit_token("KW_break", yytext, "Keyword"); }
+"istimrar"                 { emit_token("KW_continue", yytext, "Keyword"); }
+"raji"                 { emit_token("KW_return", yytext, "Keyword"); }
 
-":="                      { emit_token("OP_ASSIGN", yytext, "Operator"); }
-"->"                      { emit_token("OP_ARROW", yytext, "Operator"); }
-"**"                      { emit_token("OP_POWER", yytext, "Operator"); }
-"%%"                      { emit_token("OP_PERC", yytext, "Operator"); }
 
+
+"=>"                      { emit_token("OP_ASSIGN", yytext, "Operator"); }
+"+"                      { emit_token("OP_ADD", yytext, "Operator"); }
+"-"                      { emit_token("OP_SUBTRACT", yytext, "Operator"); }
+"*"                      { emit_token("OP_MUL", yytext, "Operator"); }
+"/"                      { emit_token("OP_DEVISION", yytext, "Operator"); }
+"++"                      { emit_token("OP_INCREMENT", yytext, "Operator"); }
+"--"                      { emit_token("OP_DECREMENT", yytext, "Operator"); }
+
+
+
+";"                       { emit_token("P_TERMINATOR", yytext, "Punctuation"); }
+"{"                       { emit_token("P_CURLY_START", yytext, "Punctuation"); }
+"}"                       { emit_token("P_CURLY_END", yytext, "Punctuation"); }
 "~"                       { emit_token("P_TILDE", yytext, "Punctuation"); }
 "`"                       { emit_token("P_BACKTICK", yytext, "Punctuation"); }
 "@"                       { emit_token("P_AT", yytext, "Punctuation"); }
 
 {STRING}                  { emit_token("STRING", yytext, "String"); }
-{NUMBER}                  { emit_token("NUMBER", yytext, "Number"); }
+{FLOAT}                   { emit_token("FLOAT", yytext, "Float"); }
+{INTEGER}                 { emit_token("INT", yytext, "Integer"); }
 {ID}                      { emit_token("IDENT", yytext, "Identifier"); }
 
 {WS}                      { /* ignore whitespace */ }
 
 
-.                         { fprintf(errf, "LEX_ERROR: Unknown char '%s' at line (approx) --\\n", yytext); }
+.                         { fprintf(errf, "UNKNOWN_TOKEN: %s\n", yytext); }
 
 %%
 

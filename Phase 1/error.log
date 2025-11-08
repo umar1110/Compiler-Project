@@ -1,1 +1,2 @@
-LEX_ERROR: Unknown char '(' at line (approx) --\nLEX_ERROR: Unknown char ')' at line (approx) --\nLEX_ERROR: Unknown char '=' at line (approx) --\nLEX_ERROR: Unknown char '=' at line (approx) --\nLEX_ERROR: Unknown char '+' at line (approx) --\nLEX_ERROR: Unknown char '(' at line (approx) --\nLEX_ERROR: Unknown char '.' at line (approx) --\nLEX_ERROR: Unknown char '.' at line (approx) --\nLEX_ERROR: Unknown char ')' at line (approx) --\nLEX_ERROR: Unknown char '>' at line (approx) --\n
+UNKNOWN_TOKEN: |
+UNKNOWN_TOKEN: |
