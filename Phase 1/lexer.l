@@ -19,6 +19,7 @@ static int identifier_count = 0;
 static int integer_count = 0;
 static int float_count = 0;
 static int string_count = 0;
+static int char_count = 0;
 static int operator_count = 0;
 static int punctuation_count = 0;
 static int other_count = 0;
@@ -49,6 +50,8 @@ static void increment_category(const char *category) {
         float_count += 1;
     } else if (strcmp(category, "String") == 0) {
         string_count += 1;
+    } else if (strcmp(category, "Char") == 0) {
+        char_count += 1;
     } else if (strcmp(category, "Operator") == 0) {
         operator_count += 1;
     } else if (strcmp(category, "Punctuation") == 0) {
@@ -77,6 +80,7 @@ static void print_summary(void) {
     printf("  Integer       : %d\n", integer_count);
     printf("  Float         : %d\n", float_count);
     printf("  String        : %d\n", string_count);
+    printf("  Char          : %d\n", char_count);
     printf("  Operator      : %d\n", operator_count);
     printf("  Punctuation   : %d\n", punctuation_count);
     printf("  Other         : %d\n", other_count);
@@ -93,6 +97,7 @@ ID         [a-zA-Z_][a-zA-Z0-9_]*
 INTEGER    [+-]?{DIGIT}+
 FLOAT      [+-]?{DIGIT}+\.{DIGIT}+
 STRING     \"([^\\\"]|\\.)*\"
+CHAR       \'(\\.|[^\\'\n])\'
 WS         [ \t\r\n]+
 
 %%
@@ -122,6 +127,11 @@ WS         [ \t\r\n]+
 
 
 "=>"                      { emit_token("OP_ASSIGN", yytext, "Operator"); }
+"=="                      { emit_token("OP_EQUAL", yytext, "Operator"); }
+"<="                      { emit_token("OP_LE", yytext, "Operator"); }
+">="                      { emit_token("OP_GE", yytext, "Operator"); }
+"<"                       { emit_token("OP_LT", yytext, "Operator"); }
+">"                       { emit_token("OP_GT", yytext, "Operator"); }
 "+"                      { emit_token("OP_ADD", yytext, "Operator"); }
 "-"                      { emit_token("OP_SUBTRACT", yytext, "Operator"); }
 "*"                      { emit_token("OP_MUL", yytext, "Operator"); }
@@ -139,6 +149,7 @@ WS         [ \t\r\n]+
 "@"                       { emit_token("P_AT", yytext, "Punctuation"); }
 
 {STRING}                  { emit_token("STRING", yytext, "String"); }
+{CHAR}                    { emit_token("CHAR", yytext, "Char"); }
 {FLOAT}                   { emit_token("FLOAT", yytext, "Float"); }
 {INTEGER}                 { emit_token("INT", yytext, "Integer"); }
 {ID}                      { emit_token("IDENT", yytext, "Identifier"); }

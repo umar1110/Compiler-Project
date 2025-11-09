@@ -15,7 +15,7 @@ Line 4: P_TERMINATOR → ;
 Line 5: KW_char → harf
 Line 5: IDENT → letter
 Line 5: OP_ASSIGN → =>
-Line 5: STRING → "A"
+Line 5: CHAR → 'A'
 Line 5: P_TERMINATOR → ;
 Line 6: KW_bool → sahih
 Line 6: IDENT → ready
@@ -43,63 +43,97 @@ Line 11: STRING → "B"
 Line 11: P_TERMINATOR → ;
 Line 12: KW_elseIf → waIn
 Line 12: IDENT → count
-Line 12: OP_ASSIGN → =>
+Line 12: OP_EQUAL → ==
 Line 12: INT → 5
 Line 12: P_TERMINATOR → ;
 Line 13: KW_else → walakin
+Line 13: P_TILDE → ~
 Line 13: P_CURLY_START → {
 Line 14: KW_break → qaf
 Line 14: P_TERMINATOR → ;
 Line 15: P_CURLY_END → }
 Line 16: P_CURLY_END → }
-Line 17: KW_for → bimiqdar
-Line 17: IDENT → index
-Line 17: OP_ASSIGN → =>
-Line 17: INT → 1
+Line 17: KW_if → in
+Line 17: IDENT → count
+Line 17: OP_EQUAL → ==
+Line 17: INT → 0
 Line 17: P_TERMINATOR → ;
-Line 18: IDENT → index
-Line 18: OP_INCREMENT → ++
+Line 18: KW_if → in
+Line 18: IDENT → count
+Line 18: OP_LE → <=
+Line 18: INT → 10
 Line 18: P_TERMINATOR → ;
-Line 19: KW_return → raji
+Line 19: KW_if → in
 Line 19: IDENT → count
+Line 19: OP_GE → >=
+Line 19: INT → 0
 Line 19: P_TERMINATOR → ;
-Line 20: P_CURLY_END → }
-Line 22: INT → +12
-Line 23: P_TILDE → ~
+Line 20: KW_if → in
+Line 20: IDENT → ratio
+Line 20: OP_LT → <
+Line 20: INT → 5
+Line 20: P_TERMINATOR → ;
+Line 21: KW_if → in
+Line 21: IDENT → ratio
+Line 21: OP_GT → >
+Line 21: INT → 1
+Line 21: P_TERMINATOR → ;
+Line 22: KW_for → bimiqdar
+Line 22: IDENT → index
+Line 22: OP_ASSIGN → =>
+Line 22: INT → 1
+Line 22: P_TERMINATOR → ;
+Line 23: IDENT → index
+Line 23: OP_INCREMENT → ++
+Line 23: P_TERMINATOR → ;
+Line 24: KW_return → raji
+Line 24: IDENT → count
+Line 24: P_TERMINATOR → ;
+Line 25: P_CURLY_END → }
+Line 27: INT → +12
+Line 28: P_TILDE → ~
 
 Token Type Counts:
   KW_def / KW_func : 1
-  IDENT         : 14
-  P_TILDE       : 3
+  IDENT         : 19
+  P_TILDE       : 4
   P_CURLY_START : 3
   KW_int        : 1
-  OP_ASSIGN     : 9
-  INT           : 6
-  P_TERMINATOR  : 12
+  OP_ASSIGN     : 8
+  INT           : 11
+  P_TERMINATOR  : 17
   KW_float      : 1
   FLOAT         : 1
   KW_char       : 1
-  STRING        : 2
+  CHAR          : 1
   KW_bool       : 1
   KW_else       : 2
   KW_while      : 1
   OP_ADD        : 1
   OP_DEVISION   : 1
+  STRING        : 1
   KW_elseIf     : 1
+  OP_EQUAL      : 2
   KW_break      : 1
   P_CURLY_END   : 3
+  KW_if         : 5
+  OP_LE         : 1
+  OP_GE         : 1
+  OP_LT         : 1
+  OP_GT         : 1
   KW_for        : 1
   OP_INCREMENT  : 1
   KW_return     : 1
 
 Category Counts:
-  Keyword       : 12
-  Identifier    : 14
-  Integer       : 6
+  Keyword       : 17
+  Identifier    : 19
+  Integer       : 11
   Float         : 1
-  String        : 2
-  Operator      : 12
-  Punctuation   : 21
+  String        : 1
+  Char          : 1
+  Operator      : 17
+  Punctuation   : 27
   Other         : 0
 
-Total Tokens    : 68
+Total Tokens    : 94

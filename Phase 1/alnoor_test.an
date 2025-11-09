@@ -2,18 +2,23 @@ Dalla brightLight ~
 {
     raqam count => 0;
     aaim ratio => 3.5;
-    harf letter => "A";
+    harf letter => 'A';
     sahih ready => walakin;
     haythuma ~
     {
         count => count + 1;
         ratio => ratio / 2;
         letter => "B";
-        waIn count => 5;
-        walakin {
+        waIn count == 5;
+        walakin ~ {
             qaf;
         }
     }
+    in count == 0;
+    in count <= 10;
+    in count >= 0;
+    in ratio < 5;
+    in ratio > 1;
     bimiqdar index => 1;
     index++ ;
     raji count;
