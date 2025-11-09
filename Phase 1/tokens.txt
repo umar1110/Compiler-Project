@@ -1,71 +1,71 @@
-KW_def / KW_func : Dalla
-IDENT           : brightLight
-P_TILDE         : ~
-P_CURLY_START   : {
-KW_int          : raqam
-IDENT           : count
-OP_ASSIGN       : =>
-INT             : 0
-P_TERMINATOR    : ;
-KW_float        : aaim
-IDENT           : ratio
-OP_ASSIGN       : =>
-FLOAT           : 3.5
-P_TERMINATOR    : ;
-KW_char         : harf
-IDENT           : letter
-OP_ASSIGN       : =>
-STRING          : "A"
-P_TERMINATOR    : ;
-KW_bool         : sahih
-IDENT           : ready
-OP_ASSIGN       : =>
-KW_else         : walakin
-P_TERMINATOR    : ;
-KW_while        : haythuma
-P_TILDE         : ~
-P_CURLY_START   : {
-IDENT           : count
-OP_ASSIGN       : =>
-IDENT           : count
-OP_ADD          : +
-INT             : 1
-P_TERMINATOR    : ;
-IDENT           : ratio
-OP_ASSIGN       : =>
-IDENT           : ratio
-OP_DEVISION     : /
-INT             : 2
-P_TERMINATOR    : ;
-IDENT           : letter
-OP_ASSIGN       : =>
-STRING          : "B"
-P_TERMINATOR    : ;
-KW_elseIf       : waIn
-IDENT           : count
-OP_ASSIGN       : =>
-INT             : 5
-P_TERMINATOR    : ;
-KW_else         : walakin
-P_CURLY_START   : {
-KW_break        : qaf
-P_TERMINATOR    : ;
-P_CURLY_END     : }
-P_CURLY_END     : }
-KW_for          : bimiqdar
-IDENT           : index
-OP_ASSIGN       : =>
-INT             : 1
-P_TERMINATOR    : ;
-IDENT           : index
-OP_INCREMENT    : ++
-P_TERMINATOR    : ;
-KW_return       : raji
-IDENT           : count
-P_TERMINATOR    : ;
-P_CURLY_END     : }
-INT             : +12
-P_TILDE         : ~
+Line 1: KW_def / KW_func → Dalla
+Line 1: IDENT → brightLight
+Line 1: P_TILDE → ~
+Line 2: P_CURLY_START → {
+Line 3: KW_int → raqam
+Line 3: IDENT → count
+Line 3: OP_ASSIGN → =>
+Line 3: INT → 0
+Line 3: P_TERMINATOR → ;
+Line 4: KW_float → aaim
+Line 4: IDENT → ratio
+Line 4: OP_ASSIGN → =>
+Line 4: FLOAT → 3.5
+Line 4: P_TERMINATOR → ;
+Line 5: KW_char → harf
+Line 5: IDENT → letter
+Line 5: OP_ASSIGN → =>
+Line 5: STRING → "A"
+Line 5: P_TERMINATOR → ;
+Line 6: KW_bool → sahih
+Line 6: IDENT → ready
+Line 6: OP_ASSIGN → =>
+Line 6: KW_else → walakin
+Line 6: P_TERMINATOR → ;
+Line 7: KW_while → haythuma
+Line 7: P_TILDE → ~
+Line 8: P_CURLY_START → {
+Line 9: IDENT → count
+Line 9: OP_ASSIGN → =>
+Line 9: IDENT → count
+Line 9: OP_ADD → +
+Line 9: INT → 1
+Line 9: P_TERMINATOR → ;
+Line 10: IDENT → ratio
+Line 10: OP_ASSIGN → =>
+Line 10: IDENT → ratio
+Line 10: OP_DEVISION → /
+Line 10: INT → 2
+Line 10: P_TERMINATOR → ;
+Line 11: IDENT → letter
+Line 11: OP_ASSIGN → =>
+Line 11: STRING → "B"
+Line 11: P_TERMINATOR → ;
+Line 12: KW_elseIf → waIn
+Line 12: IDENT → count
+Line 12: OP_ASSIGN → =>
+Line 12: INT → 5
+Line 12: P_TERMINATOR → ;
+Line 13: KW_else → walakin
+Line 13: P_CURLY_START → {
+Line 14: KW_break → qaf
+Line 14: P_TERMINATOR → ;
+Line 15: P_CURLY_END → }
+Line 16: P_CURLY_END → }
+Line 17: KW_for → bimiqdar
+Line 17: IDENT → index
+Line 17: OP_ASSIGN → =>
+Line 17: INT → 1
+Line 17: P_TERMINATOR → ;
+Line 18: IDENT → index
+Line 18: OP_INCREMENT → ++
+Line 18: P_TERMINATOR → ;
+Line 19: KW_return → raji
+Line 19: IDENT → count
+Line 19: P_TERMINATOR → ;
+Line 20: P_CURLY_END → }
+Line 22: INT → +12
+Line 23: P_TILDE → ~
 
 Token Type Counts:
   KW_def / KW_func : 1

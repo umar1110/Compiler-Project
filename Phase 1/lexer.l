@@ -59,7 +59,7 @@ static void increment_category(const char *category) {
 }
 
 static void emit_token(const char *type, const char *text, const char *category) {
-    printf("%-15s : %s\n", type, text);
+    printf("Line %d: %s → %s\n", yylineno, type, text);
     total_tokens += 1;
     increment_type(type);
     increment_category(category);
@@ -87,6 +87,7 @@ static void print_summary(void) {
 %}
 
 /* Definitions section */
+%option yylineno
 DIGIT      [0-9]
 ID         [a-zA-Z_][a-zA-Z0-9_]*
 INTEGER    [+-]?{DIGIT}+
@@ -145,7 +146,7 @@ WS         [ \t\r\n]+
 {WS}                      { /* ignore whitespace */ }
 
 
-.                         { fprintf(errf, "UNKNOWN_TOKEN: %s\n", yytext); }
+.                         { fprintf(errf, "Line %d: ERROR → %s (invalid identifier)\n", yylineno, yytext); }
 
 %%
 
