@@ -53,6 +53,6 @@ Anyone caught sharing or duplicating content will face strict marking penalties 
 - [x] Original 20+ line sample program using all custom tokens.
 - [x] Generated token output with totals saved to repository.
 - [x] Error log ready to capture lexical issues.
-- [ ] PDF documentation (regex table, FA diagrams, explanation).  
-- [ ] Execution video (≤5 minutes) to be added before final submission.
+- [x] PDF documentation (regex table, FA diagrams, explanation).  
+- [ ] Execution video (≤5 minutes) to be added before final submission. Loom link: https://www.loom.com/share/c4333cd9d3064d7aa3314bee6df05b07
 
