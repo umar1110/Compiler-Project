@@ -1,0 +1,46 @@
+Dalla main ~
+{
+    raqam count => 0;
+    aaim ratio => 3.5;
+    harf letter => 'A';
+    sahih ready;
+    
+    count => count + 1;
+    ratio => ratio / 2;
+    
+    kharij count;
+    dakhil count;
+    
+    in count == 0 ~
+    {
+        kharij count;
+    }
+    waIn count == 5 ~
+    {
+        kharij count;
+    }
+    walakin ~
+    {
+        kharij count;
+    }
+    
+    haythuma count < 10 ~
+    {
+        count => count + 1;
+        in count == 5 ~
+        {
+            qaf;
+        }
+    }
+    
+    bimiqdar index => 1 ~
+    {
+        index => index + 1;
+        in index > 10 ~
+        {
+            qaf;
+        }
+    }
+    
+    raji count;
+}

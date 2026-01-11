@@ -55,3 +55,74 @@ Anyone caught sharing or duplicating content will face strict marking penalties 
 - [X] Error log ready to capture lexical issues.
 - [X] PDF documentation (regex table, FA diagrams, explanation). ( Incomplete pdf as completed in hardcopy)
 - [X] Execution video (≤5 minutes) to be added before final submission. Loom link: https://www.loom.com/share/c4333cd9d3064d7aa3314bee6df05b07
+
+---
+
+## Phase 2 Requirements
+
+### Build and Run Instructions
+
+#### Prerequisites
+Make sure you have the following tools installed:
+- `flex` (or `lex`) - Lexical analyzer generator
+- `yacc`, `byacc`, or `bison` - Parser generator
+- `gcc` - C compiler
+
+**Note**: On macOS, if `yacc` gives an error about Xcode, you can:
+- Install bison: `brew install bison`
+- Use byacc if available (often comes with Command Line Tools)
+
+#### Building the Parser
+
+1. Navigate to the Phase_2 directory:
+   ```bash
+   cd Phase_2
+   ```
+
+2. Build the parser manually:
+   ```bash
+   # Generate parser and scanner
+   flex lexer.l
+   bison -y -d parser.y      # -y flag generates y.tab.c and y.tab.h
+   
+   # Compile
+   gcc lex.yy.c y.tab.c -o parser
+   ```
+
+#### Running the Parser
+
+**Test with valid program:**
+```bash
+./parser valid_program.an
+```
+
+**Test with invalid program (to see error messages):**
+```bash
+./parser invalid_program.an
+```
+
+#### Clean Build Files
+To remove generated files:
+```bash
+rm -f lex.yy.c y.tab.c y.tab.h parser
+```
+
+#### Expected Output
+
+For **valid programs**, you should see:
+- Parsing messages for each construct (variable declarations, statements, loops, etc.)
+- "Syntax analysis successful" message at the end
+
+For **invalid programs**, you should see:
+- Syntax error messages with line numbers
+- Error details showing the nature of error and found token
+- "Syntax analysis failed" message at the end
+
+#### Troubleshooting
+
+If you encounter compilation errors:
+- Make sure `bison`, `flex`, and `gcc` are installed
+- On macOS with Command Line Tools only, try: `brew install bison`
+- Use `bison -y -d parser.y` (with `-y` flag) to generate `y.tab.c` and `y.tab.h`
+- No need for `-lfl` flag since lexer uses `%option noyywrap`
+- Make sure to run `flex lexer.l` first, then `bison -y -d parser.y`, then compile
